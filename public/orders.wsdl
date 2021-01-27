@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<definitions targetNamespace="orders.wsdl" name="OrdersService"
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:tns="orders.wsdl"
+>
+    <types>
+        <xsd:schema targetNamespace="urn:orderswsdl">
+            <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+            <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+        </xsd:schema>
+    </types>
+
+    <message name="ORDERSResponse"><part name="return" type="xsd:string"/></message>
+    <portType name="ORDERSPortType">
+        <operation name="orders">
+            <output message="tns:ORDERSResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="ORDERSBinding" type="tns:ORDERSPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="orders">
+            <soap:operation soapAction="urn:arnleadservicewsdl#orders" style="rpc"/>
+            <input>
+                <soap:body use="encoded" namespace="urn:orderswsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="urn:orderswsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+    </binding>
+
+    <service name="ORDERSService">
+        <port name="ORDERSPort" binding="tns:ORDERSBinding">
+            <soap:address location="http://localhost:8089/orders"/>
+        </port>
+    </service>
+</definitions>

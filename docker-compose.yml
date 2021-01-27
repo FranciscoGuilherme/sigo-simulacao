@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  simulacao:
+    container_name: simulacao
+    build: .
+    image: simulacao:1.0
+    ports:
+      - 449:443
+      - 8089:80
+      - 9009:9000
+    volumes:
+      - ./:/app
