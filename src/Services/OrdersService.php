@@ -6,6 +6,6 @@ class OrdersService
 {
     public function orders()
     {
-        return 'Orders';
+        return include('/app/config/storage/orders.php');
     }
 }

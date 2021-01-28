@@ -13,10 +13,17 @@
         <xsd:schema targetNamespace="urn:orderswsdl">
             <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
             <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+            <xsd:complexType name="ORDERSArray">
+                <xsd:complexContent>
+                <xsd:restriction base="SOAP-ENC:Array">
+                    <xsd:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="xsd:string[]" />
+                </xsd:restriction>
+                </xsd:complexContent>
+            </xsd:complexType>
         </xsd:schema>
     </types>
 
-    <message name="ORDERSResponse"><part name="return" type="xsd:string"/></message>
+    <message name="ORDERSResponse"><part name="return" type="xsd:ORDERSArray"/></message>
     <portType name="ORDERSPortType">
         <operation name="orders">
             <output message="tns:ORDERSResponse"/>
