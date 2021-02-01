@@ -80,5 +80,45 @@ return [
                 'minutes' => 20
             ]
         ]
+    ],
+    [
+        'serial' => 'ORD200F',
+        'status' => 'pending',
+        'client' => 'Empresa 4',
+        'date' => '25/10/2021',
+        'datePart' => [
+            'day' => 25,
+            'month' => 10,
+            'year' => 2021
+        ],
+        'details' => [
+            'product' => 'Tecido H',
+            'quantity' => 50,
+            'prodTime' => [
+                'days' => 0,
+                'hours' => 12,
+                'minutes' => 20
+            ]
+        ]
+    ],
+    [
+        'serial' => 'ORD250G',
+        'status' => 'delivered',
+        'client' => 'Empresa 4',
+        'date' => '23/10/2021',
+        'datePart' => [
+            'day' => 23,
+            'month' => 10,
+            'year' => 2021
+        ],
+        'details' => [
+            'product' => 'Tecido H',
+            'quantity' => 50,
+            'prodTime' => [
+                'days' => 0,
+                'hours' => 12,
+                'minutes' => 20
+            ]
+        ]
     ]
 ];

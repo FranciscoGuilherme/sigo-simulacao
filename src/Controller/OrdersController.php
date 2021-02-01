@@ -8,6 +8,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Services\OrdersService;
 use App\Interfaces\SoapServerInterface;
 
+/**
+ * @package App\Controller
+ */
 class OrdersController extends AbstractController
 {
     /**
@@ -24,7 +27,11 @@ class OrdersController extends AbstractController
     }
 
     /**
-     * @Route("/orders")
+     * @Route("/legacy/orders")
+     *
+     * @param OrdersService $ordersService
+     * 
+     * @return Response
      */
     public function index(OrdersService $ordersService): Response
     {
