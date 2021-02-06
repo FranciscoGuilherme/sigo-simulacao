@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,9 +22,11 @@ class ProcessBreakController extends AbstractController
      *
      * @return JsonResponse
      */
-    public function action(MessageBusInterface $bus): JsonResponse
+    public function action(Request $request, MessageBusInterface $bus): JsonResponse
     {
-        $bus->dispatch(new ProcessMessage('P01AYM', ProcessMessage::STEP_RUNNING));
+        $requestContent = $request->toArray();
+
+        $bus->dispatch(new ProcessMessage($requestContent['name'], ProcessMessage::STEP_RUNNING));
 
         return new JsonResponse([
             'message' => 'Mensagem adicionada na fila com sucesso'
