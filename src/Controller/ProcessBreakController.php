@@ -18,6 +18,7 @@ class ProcessBreakController extends AbstractController
     /**
      * @Route("/process/break", methods={"GET"}, name="process")
      *
+     * @param Request $request
      * @param MessageBusInterface $bus
      *
      * @return JsonResponse
